@@ -113,8 +113,10 @@ public class TaxCalculatorController {
         taxCalculatorService.calculateTax(newTrade);
 
         /*
-        *
-        * */
+         * The repository fetches the trade withe id passed in the method
+         * if there is a trade found we update the values and save the existing TradeInfoDto
+         * if there is no value fetched the repository saves the newTrade object
+         * */
         TradeInfo updatedTrade = repository.findById(id)
                 .map(tradeInfoDto -> {
                     tradeInfoDto.setTradeName(newTrade.getTradeName());
